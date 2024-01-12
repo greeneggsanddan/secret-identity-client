@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import Chat from './components/Chat';
+import PromptInput from './components/PromptInput';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const demoConvo = [
+    {
+      role: 'user',
+      content: 'Can you help me understand more about black holes?',
+    },
+    {
+      role: 'assistant',
+      content:
+        "Absolutely! A black hole is a region in space where the gravitational pull is very strong.",
+    },
+    {
+      role: 'user',
+      content: "That's fascinating! What happens inside a black hole?",
+    },
+    {
+      role: 'assistant',
+      content:
+        "The truth is, we don't know for sure what happens inside a black hole due to the limitations of our current understanding and technology.",
+    },
+  ];
+
+  const [chatMessages, setChatMessages] = useState(demoConvo);
+  const [id, setId] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isWinner, setIsWinner] = useState(false);
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className='container'>
+      <Chat chatMessages={chatMessages} isLoading={isLoading} />
+      <PromptInput
+        chatMessages={chatMessages}
+        setChatMessages={setChatMessages}
+        id={id}
+        setId={setId}
+        setIsLoading={setIsLoading}
+        setIsWinner={setIsWinner}
+      />
+    </div>
+  );
 }
 
-export default App
+export default App;

@@ -1,0 +1,30 @@
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.secret {
+  margin-right: 12px;
+  background-color: #6C757D;
+  border: 1px solid #596067;
+}
+
+.player {
+  margin-left: 12px;
+  background-color: #FFF3CD;
+  border: 1px solid #D2C8A9;
+}
+
+.secret img {
+  width: 100%;
+  height: auto;
+  padding: 8px;
+}
+
+.player img {
+  width: 100%;
+  height: auto;
+  padding: 12px;
+}
