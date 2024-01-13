@@ -3,11 +3,14 @@ import { useState } from 'react';
 export default function PromptInput({
   chatMessages,
   setChatMessages,
+  id,
+  setId,
+  isLoading,
   setIsLoading,
+  isWinner,
   setIsWinner,
 }) {
   const [promptText, setPromptText] = useState('');
-  const [id, setId] = useState(null);
 
   function handleChange(e) {
     setPromptText(e.target.value);
@@ -47,7 +50,7 @@ export default function PromptInput({
 
         if (id === null) setId(result.id);
         setChatMessages(result.chatMessages);
-        // setIsWinner(result.isWinner); //What are you going to do when the winner is found?
+        setIsWinner(result.isWinner);
       }
     } catch (err) {
       console.error(err);
@@ -69,8 +72,9 @@ export default function PromptInput({
           maxLength="100"
           value={promptText}
           onChange={handleChange}
+          disabled={isWinner}
         />
-        <button className="btn btn-dark" type="submit" disabled={!promptText.trim()}>
+        <button className="btn btn-dark" type="submit" disabled={!promptText.trim() || isLoading || isWinner}>
           <i className="bi bi-send"></i>
         </button>
       </div>
