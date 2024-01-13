@@ -1,43 +1,28 @@
 import { useState } from 'react';
 import Chat from './components/Chat';
 import PromptInput from './components/PromptInput';
-import './App.css';
 
 function App() {
-  const demoConvo = [
-    {
-      role: 'user',
-      content: 'Can you help me understand more about black holes?',
-    },
-    {
-      role: 'assistant',
-      content:
-        "Absolutely! A black hole is a region in space where the gravitational pull is very strong.",
-    },
-    {
-      role: 'user',
-      content: "That's fascinating! What happens inside a black hole?",
-    },
-    {
-      role: 'assistant',
-      content:
-        "The truth is, we don't know for sure what happens inside a black hole due to the limitations of our current understanding and technology.",
-    },
-  ];
-
-  const [chatMessages, setChatMessages] = useState(demoConvo);
-  const [id, setId] = useState(null);
+  const [chatMessages, setChatMessages] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isWinner, setIsWinner] = useState(false);
 
   return (
-    <div className='container'>
+    <div
+      className="container d-flex flex-column border ps-5 pe-5"
+      style={{ minHeight: '100vh', paddingBottom: '80px' }}
+    >
+      <div className="align-self-center" style={{ width: '100px', height: '100px', margin: "24px"}}>
+        <img
+          src="./incognito.svg"
+          alt="Secret Avatar"
+          style={{ width: '100%', height: 'auto' }}
+        />
+      </div>
       <Chat chatMessages={chatMessages} isLoading={isLoading} />
       <PromptInput
         chatMessages={chatMessages}
         setChatMessages={setChatMessages}
-        id={id}
-        setId={setId}
         setIsLoading={setIsLoading}
         setIsWinner={setIsWinner}
       />
