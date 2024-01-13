@@ -30,6 +30,8 @@ export default function PromptInput({
   }
 
   async function fetchData(request) {
+    setIsLoading(true);
+
     try {
       const response = await fetch('http://localhost:3000/chat', {
         method: 'POST',
@@ -49,6 +51,8 @@ export default function PromptInput({
       }
     } catch (err) {
       console.error(err);
+    } finally {
+      setIsLoading(false);
     }
   }
 

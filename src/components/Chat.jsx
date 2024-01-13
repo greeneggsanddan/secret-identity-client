@@ -3,13 +3,16 @@ import './Chat.css';
 
 export default function Chat({ chatMessages, isLoading }) {
   const chatRef = useRef(null);
-  
+
   useEffect(() => {
     chatRef.current?.scrollIntoView();
   }, [chatMessages]);
 
   const messages = chatMessages.map((message) => (
-    <div className={`d-flex ${message.role === 'user' && 'flex-row-reverse'}`} key={message}>
+    <div
+      className={`d-flex ${message.role === 'user' && 'flex-row-reverse'}`}
+      key={message}
+    >
       {message.role === 'assistant' ? (
         <div className="secret avatar">
           <img src="./incognito.svg" alt="Secret Avatar" />
@@ -22,15 +25,14 @@ export default function Chat({ chatMessages, isLoading }) {
       <div
         className={`card mb-3 ${
           message.role === 'assistant'
-          ? 'text-bg-secondary'
-          : 'text-black bg-warning-subtle'
+            ? 'text-bg-secondary'
+            : 'text-black bg-warning-subtle'
         }`}
-        >
+      >
         <div className="card-body">{message.content}</div>
       </div>
     </div>
   ));
-  
 
   return (
     <div>
@@ -40,11 +42,22 @@ export default function Chat({ chatMessages, isLoading }) {
         </div>
         <div className="card text-bg-secondary mb-3">
           <div className="card-body">
-            Try to guess my secret identity by asking &quot;Yes-or-No&quot; questions.
+            Try to guess my secret identity by asking &quot;Yes-or-No&quot;
+            questions.
           </div>
         </div>
       </div>
       {messages}
+      {isLoading && (
+        <div className='d-flex align-items-center'>
+          <div className="secret avatar">
+            <img src="./incognito.svg" alt="Secret Avatar" />
+          </div>
+          <div className="spinner-border ms-2" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      )}
       <div ref={chatRef} />
     </div>
   );
