@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 export default function PromptInput({
   chatMessages,
@@ -10,7 +10,7 @@ export default function PromptInput({
   isWinner,
   setIsWinner,
 }) {
-  const [promptText, setPromptText] = useState('');
+  const [promptText, setPromptText] = useState("");
 
   function handleChange(e) {
     setPromptText(e.target.value);
@@ -18,9 +18,9 @@ export default function PromptInput({
 
   function handleSubmit(e) {
     e.preventDefault();
-    
+
     const userMessage = {
-      role: 'user',
+      role: "user",
       content: promptText,
     };
     const updatedChatMessages = [...chatMessages, userMessage];
@@ -29,7 +29,7 @@ export default function PromptInput({
     fetchData(requestBody);
 
     setChatMessages(updatedChatMessages);
-    setPromptText('');
+    setPromptText("");
   }
 
   async function fetchData(request) {
@@ -37,15 +37,15 @@ export default function PromptInput({
 
     try {
       const response = await fetch(
-        'https://secret-identity-server.azurewebsites.net/chat',
+        "https://secret-identity-server.azurewebsites.net/chat",
         {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json",
           },
           body: JSON.stringify(request),
-          mode: 'cors',
-        }
+          mode: "cors",
+        },
       );
 
       if (response.ok) {
@@ -77,7 +77,11 @@ export default function PromptInput({
           onChange={handleChange}
           disabled={isWinner}
         />
-        <button className="btn btn-dark" type="submit" disabled={!promptText.trim() || isLoading || isWinner}>
+        <button
+          className="btn btn-dark"
+          type="submit"
+          disabled={!promptText.trim() || isLoading || isWinner}
+        >
           <i className="bi bi-send"></i>
         </button>
       </div>

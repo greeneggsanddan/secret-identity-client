@@ -1,6 +1,6 @@
-import { useState } from 'react';
-import Chat from './components/Chat';
-import PromptInput from './components/PromptInput';
+import { useState } from "react";
+import Chat from "./components/Chat";
+import PromptInput from "./components/PromptInput";
 
 function App() {
   const [chatMessages, setChatMessages] = useState([]);
@@ -11,16 +11,16 @@ function App() {
   return (
     <div
       className="container d-flex flex-column border ps-5 pe-5"
-      style={{ minHeight: '100vh', paddingBottom: '72px' }}
+      style={{ minHeight: "100vh", paddingBottom: "72px" }}
     >
       <div
         className="align-self-center"
-        style={{ width: '100px', height: '100px', margin: '24px' }}
+        style={{ width: "100px", height: "100px", margin: "24px" }}
       >
         <img
           src="./incognito.svg"
           alt="Secret Avatar"
-          style={{ width: '100%', height: 'auto' }}
+          style={{ width: "100%", height: "auto" }}
         />
       </div>
       <Chat

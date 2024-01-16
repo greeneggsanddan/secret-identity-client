@@ -1,7 +1,14 @@
-import { useEffect, useRef } from 'react';
-import './Chat.css';
+import { useEffect, useRef } from "react";
+import "./Chat.css";
 
-export default function Chat({ chatMessages, setChatMessages, setId, isLoading, isWinner, setIsWinner }) {
+export default function Chat({
+  chatMessages,
+  setChatMessages,
+  setId,
+  isLoading,
+  isWinner,
+  setIsWinner,
+}) {
   const chatRef = useRef(null);
 
   useEffect(() => {
@@ -10,10 +17,10 @@ export default function Chat({ chatMessages, setChatMessages, setId, isLoading, 
 
   const messages = chatMessages.map((message, index) => (
     <div
-      className={`d-flex ${message.role === 'user' && 'flex-row-reverse'}`}
+      className={`d-flex ${message.role === "user" && "flex-row-reverse"}`}
       key={index}
     >
-      {message.role === 'assistant' ? (
+      {message.role === "assistant" ? (
         <div className="secret avatar">
           <img src="./incognito.svg" alt="Secret Avatar" />
         </div>
@@ -24,9 +31,9 @@ export default function Chat({ chatMessages, setChatMessages, setId, isLoading, 
       )}
       <div
         className={`card mb-3 ${
-          message.role === 'assistant'
-            ? 'text-bg-secondary'
-            : 'text-black bg-warning-subtle'
+          message.role === "assistant"
+            ? "text-bg-secondary"
+            : "text-black bg-warning-subtle"
         }`}
       >
         <div className="card-body">{message.content}</div>
@@ -65,8 +72,12 @@ export default function Chat({ chatMessages, setChatMessages, setId, isLoading, 
         </div>
       )}
       {isWinner && (
-        <div className='d-flex justify-content-center mb-3'>
-          <button type="button" className="btn btn-lg btn-dark" onClick={handleReset}>
+        <div className="d-flex justify-content-center mb-3">
+          <button
+            type="button"
+            className="btn btn-lg btn-dark"
+            onClick={handleReset}
+          >
             Play again!
           </button>
         </div>
