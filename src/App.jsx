@@ -10,7 +10,7 @@ function App() {
 
   return (
     <div
-      className="container d-flex flex-column border ps-5 pe-5"
+      className="container d-flex flex-column border ps-md-5 pe-md-5 ps-3 pe-3"
       style={{ minHeight: "100vh", paddingBottom: "72px" }}
     >
       <div

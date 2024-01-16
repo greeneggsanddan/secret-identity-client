@@ -64,7 +64,7 @@ export default function PromptInput({
 
   return (
     <form
-      className="container border fixed-bottom bg-white pb-3 pt-3 ps-5 pe-5"
+      className="container border fixed-bottom bg-white pb-3 pt-3 ps-md-5 pe-md-5 ps-3 pe-3"
       onSubmit={handleSubmit}
     >
       <div className="input-group input-group">
