@@ -36,14 +36,17 @@ export default function PromptInput({
     setIsLoading(true);
 
     try {
-      const response = await fetch('http://localhost:3000/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(request),
-        mode: 'cors',
-      });
+      const response = await fetch(
+        'https://secret-identity-server.azurewebsites.net/chat',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(request),
+          mode: 'cors',
+        }
+      );
 
       if (response.ok) {
         const result = await response.json();
